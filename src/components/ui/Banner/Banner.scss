@@ -1,0 +1,109 @@
+@import '../../../theme/_variables.scss';
+@import '../../../theme/_icons.scss';
+@import '../../../theme/_mixins.scss';
+
+$banner-title-font-size: 48px;
+$banner-subtitle-font-size: $subtitle-h3-font-size;
+$banner-search-height: 40px;
+
+.banner {
+    background-image: url('../../../assets/images/bitmap.png');
+    @media (min-width: $screen-lg-min) {
+        background-image: url('../../../assets/images/bitmap@3x.png');
+        background-size: cover; 
+    }
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    > h1 {
+        margin: 0;
+        font-size: $banner-title-font-size;
+        color: $color-tan;
+        font-weight: normal;
+    }
+    > h3 {
+        @include h3-subtitle;
+    }
+    &__search {
+        margin-top: 30px;
+        width: 35%;
+        display: flex;
+        position: relative;
+        > input {
+            border-radius: 3px;
+            border: 1px solid $color-white;
+            height: $banner-search-height;
+            background-color: transparent;
+            font-size: 15px;
+            flex: 1;
+            padding: 0 $banner-search-height 0 10px;
+            color: $color-white;
+            &:focus {
+                outline: none;
+                color: $color-blackish;
+                background-color: $color-white;
+            }
+        }
+        > button {
+            right: 0;
+            position: absolute;
+            height: 100%;
+            background-color: transparent;
+            border: 0;
+            padding: 0 10px;
+            width: $banner-search-height;
+            > i {
+                height: 20px;
+            }
+        }
+        &__selector {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            padding-top: 20px;
+            &__inner {
+                max-height: 300px;
+                // border: 1px solid $color-grey;
+                background-color: $color-white;
+                box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.3);
+                padding: 0 15px;
+                overflow-y: scroll;
+            }
+            &__item {
+                display: flex;
+                align-items: center;
+                padding: 15px 0;
+                color: $color-grey;
+                border-bottom: 1px solid $color-grey;
+                text-decoration: none;
+                &:hover {
+                    color: $color-dark-grey;
+                }
+                &:last-child {
+                    border-bottom: 0;
+                }
+                > i {
+                    margin-right: 10px;
+                }
+                > span {
+                    max-width: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        &__selector-triangle {
+            @include triangle-up(10px, $color-white);
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 10px;
+        }
+    }
+}

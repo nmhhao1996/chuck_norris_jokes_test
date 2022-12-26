@@ -1,0 +1,25 @@
+@import '../../../theme/_variables.scss';
+@import '../../../theme/_icons.scss';
+@import '../../../theme/_mixins.scss';
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .loader {
+        border: 10px solid $color-white; /* Light grey */
+        border-top: 10px solid $color-tan; /* Blue */
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 0.5s linear infinite;
+    }
+}

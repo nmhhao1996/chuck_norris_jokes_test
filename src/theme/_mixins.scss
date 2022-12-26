@@ -1,0 +1,80 @@
+@import './_variables';
+
+@mixin container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    @media (min-width: $screen-xs-min) {
+        padding-left: 5px;
+        padding-right: 5px;
+        width: calc(100% - 10px);
+    }
+    @media (min-width: $screen-sm-min) {
+        width: 750px;
+    }
+    @media (min-width: $screen-md-min) {
+        width: 970px;
+    }
+    @media (min-width: $screen-lg-min) {
+        width: 1170px;
+    }
+}
+
+@mixin triangle-up($size, $color) {
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+}
+
+@mixin row($gutter: 20px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    @media (min-width: $screen-sm-min) {
+        margin: -(calc($gutter / 2));
+    }
+}
+
+@mixin col($gutter: 20px) {
+    margin: calc($gutter / 2);
+}
+
+@mixin h3-subtitle($color: $color-white) {
+    margin: 0;
+    font-size: $subtitle-h3-font-size;
+    color: $color;
+    font-weight: 600;
+}
+
+@mixin action-archor($color: $color-tan) {
+    text-decoration: none;
+    > i {
+        margin-left: 7px;
+    }
+    > span {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+        color: $color;
+    }
+}
+
+@mixin joke-card {
+    box-sizing: border-box;
+    padding: 16px;
+    border: 1px solid $color-white-3;
+    border-radius: 2px;
+    &:hover {
+        box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.15);
+    }
+}
+
+@mixin line($color: $color-tan) {
+    height: 0;
+    border: 1px solid $color;
+}
+

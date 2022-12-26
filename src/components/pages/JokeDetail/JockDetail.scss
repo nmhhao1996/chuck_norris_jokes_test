@@ -1,0 +1,200 @@
+@import '../../../theme/_variables.scss';
+@import '../../../theme/_mixins.scss';
+@import '../../../theme/_icons.scss';
+
+$change-joke-action-button-transition: ease 0.5s;
+
+.joke-detail {
+    &__container {
+        @include container;
+        padding-top: 40px;
+    }
+
+    .test {
+        display: flex;
+        height: 60px;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: $color-blackish;
+    }
+
+    .back-button {
+        display: flex;
+        height: 60px;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: $color-blackish;
+    }
+
+    &__item {
+        @include joke-card;
+        &__header {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            color: $color-tan;
+            > h1 {
+                line-height: 0.7;
+                margin: 0;
+                font-size: 40px;
+                font-weight: 600;
+                padding-right: 10px;
+            }
+            > h5 {
+                margin: 0;
+                line-height: 0.7;
+                padding-left: 10px;
+            }
+            > .line {
+                @include line;
+                flex: 1;
+            }
+            > p {
+                color: $color-blackish;
+            }
+        }
+    }
+
+    &__actions {
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        .change-joke-action-group {
+            @include row;
+            .button {
+                @include col;
+                border: 1px solid $color-white-3;
+                padding: 10px;
+                text-decoration: none;
+                color: $color-tan;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                &:first-child {
+                    > i {
+                        margin-right: 10px;
+                    }
+                    &:hover {
+                        padding-left: 5px;
+                        transition: $change-joke-action-button-transition;
+                        > i {
+                            margin-right: 15px;
+                            transition: $change-joke-action-button-transition;
+                        }
+                    }
+                }
+                &:last-child {
+                    > i {
+                        margin-left: 10px;
+                    }
+                    &:hover {
+                        padding-right: 5px;
+                        transition: $change-joke-action-button-transition;
+                        > i {
+                            margin-left: 15px;
+                            transition: $change-joke-action-button-transition;
+                        }
+                    }
+                }
+            }
+        }
+        .favorite-action-group {
+            @include row;
+            @mixin circle-button {
+                background-color: black;
+                height: 45px;
+                width: 45px;
+                border-radius: 50%;
+            }
+            .button-wrapper {
+                @include col;
+                @include circle-button;
+                position: relative;
+                margin-right: 30px;
+                margin-bottom: 30px;
+                display: flex;
+                text-align: center;
+            }
+            .button {
+                @include circle-button;
+                border: 0;
+                background-color: blue;
+                flex: 1;
+                opacity: 1;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.8;
+                }
+                &-like {
+                    background-color: $color-weird-green-2;
+                    > span {
+                        color: $color-weird-green-2;
+                    }
+                }
+                &-dislike {
+                    background-color: $color-sunset-red;
+                    > span {
+                        color: $color-sunset-red;
+                    }
+                }
+                > span {
+                    position: absolute;
+                    top: calc(100% + 5px);
+                    left: 0;
+                    right: 0;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    &__content {
+        @include row;
+        @media (min-width: 0) {
+            flex-direction: column;
+        }
+        @media (min-width: $screen-sm-min) {
+            flex-direction: row;
+        }
+        margin-top: 30px !important;
+        &__left {
+            @include col;
+            flex: 3;
+        }
+
+        &__right {
+            @include col;
+            @include joke-card;
+            padding: 22px;
+            flex: 1;
+            > h5 {
+                margin: 0 0 10px 0;
+                font-weight: 600;
+            }
+            > ul {
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 0;
+                > li {
+                    line-height: 1.5;
+                    font-size: 14px;
+                    width: 200px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    > a {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        color: $color-blackish;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../../theme/_variables.scss';
+@import '../../../theme/_icons.scss';
+@import '../../../theme/_mixins.scss';
+
+.footer {
+    margin-top: 40px;
+    background-image: url('../../../assets/images/bitmap-copy.png');
+    height: 190px;
+    display: flex;
+    align-items: center;
+    &__container {
+        @include container;
+        > h3 {
+            @include h3-subtitle;
+            margin-bottom: 10px;
+        }
+        > a {
+            @include action-archor;
+        }
+    }
+}

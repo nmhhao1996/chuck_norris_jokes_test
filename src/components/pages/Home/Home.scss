@@ -1,0 +1,140 @@
+@import '../../../theme/_variables.scss';
+@import '../../../theme/_mixins.scss';
+@import '../../../theme/_icons.scss';
+
+$joke-list-item-gutter: 15px;
+$category-list-item-gutter: 20px;
+
+.home {
+    &__container {
+        @include container;
+        padding-top: 40px;
+    }
+    &__category {
+        @include row;
+        margin-bottom: 20px !important;
+        &__item {
+            &.view-all {
+                background-color: $color-tan;
+                color: $color-white;
+                border: 0;
+                position: relative;
+                & > i {
+                    position: absolute;
+                    right: 10px;
+                }
+                &.selected {
+                    background-color: $color-white;
+                    color: $color-tan;
+                    border: 1px solid $color-tan;
+                }
+            }
+            &.selected {
+                background-color: $color-white;
+                color: $color-sunset-red;
+                border: 1px solid $color-sunset-red;
+            }
+            @include col;
+            width: calc(100% / 5 - $category-list-item-gutter);
+            @media (min-width: $screen-xs-min) {
+                width: calc(100% / 2 - $category-list-item-gutter);
+            }
+            @media (min-width: $screen-sm-min) {
+                width: calc(100% / 3 - $category-list-item-gutter);
+            }
+            @media (min-width: $screen-md-min) {
+                width: calc(100% / 4 - $category-list-item-gutter);
+            }
+            @media (min-width: $screen-lg-min) {
+                width: calc(100% / 5 - $category-list-item-gutter);
+            }
+            padding: 14px 0;
+            background-color: $color-sunset-red;
+            text-align: center;
+            color: $color-white;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+
+    .line {
+        @include line($color-white-3);
+    }
+    &__joke-list {
+        @include row(15px);
+        margin-top: 30px !important;
+        &__view-more {
+            margin-top: 20px;
+            text-align: center;
+            &__inner {
+                background-color: $color-white;
+                color: $color-tan;
+                border: 1px solid $color-tan;
+                padding: 14px 30px;
+                position: relative;
+                & > i {
+                    position: absolute;
+                    right: 10px;
+                }
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                text-transform: uppercase;
+            }
+        }
+
+        &__item {
+            @include col(15px);
+            @include joke-card;
+            width: calc(100% / 3 - $joke-list-item-gutter);
+            @media (min-width: $screen-xs-min) {
+                width: calc(100% / 1 - $joke-list-item-gutter);
+            }
+            @media (min-width: $screen-md-min) {
+                width: calc(100% / 2 - $joke-list-item-gutter);
+            }
+            @media (min-width: $screen-lg-min) {
+                width: calc(100% / 3 - $joke-list-item-gutter);
+            }
+            &__header {
+                text-transform: uppercase;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.25;
+                color: $color-blackish;
+                > i {
+                    margin-right: 7px;
+                }
+            }
+
+            &__content {
+                --lh: 1.57rem;
+                --max-lines: 3;
+                overflow: hidden;
+                height: calc(var(--lh) * var(--max-lines));
+                > p {
+                    margin-top: 0;
+                    font-size: 14px;
+                    line-height: var(--lh);
+                    color: $color-blackish;
+                }
+            }
+
+            &__footer {
+                display: flex;
+                justify-content: end;
+                &__action {
+                    @include action-archor;
+                }
+            }
+        }
+    }
+}

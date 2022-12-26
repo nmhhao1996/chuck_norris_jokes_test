@@ -1,0 +1,25 @@
+@import '../../../theme/_variables';
+.category-tags {
+    margin: 0 -5px;
+    &__item {
+        color: $color-white;
+        font-size: 14px;
+        background-color: $color-sunset-red;
+        padding: 0px 10px;
+        height: 20px;
+        border-radius: 10px;
+        min-width: 50px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px 5px 0;
+        text-transform: capitalize;
+        border: 0px;
+        cursor: pointer;
+        &.uncategorized {
+            background-color: $color-white;
+            color: $color-tan;
+            border: 1px solid $color-tan;
+        }
+    }
+}

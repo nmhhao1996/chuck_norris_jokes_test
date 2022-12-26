@@ -1,0 +1,162 @@
+@import '../../../theme/_variables';
+@import '../../../theme/_mixins.scss';
+@import '../../../theme/_icons.scss';
+
+$sub-menu-border-radius: 5px;
+$sub-menu-font-size: 14px;
+$dropdown-triangle-height: 8px;
+
+.navbar {
+    height: $navbar-height;
+    background-color: $color-blackish;
+    position: relative;
+    &__container {
+        @include container;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__menu-item {
+        height: $navbar-height;
+        color: $color-white-2;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-decoration: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 15px;
+        &.has-sub-menu {
+            .before-icon {
+                margin-right: 5px;
+            }
+            .after-icon {
+                margin-left: 20px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                position: relative;
+            }
+        }
+
+        .dropdown-triangle {
+            @include triangle-up($dropdown-triangle-height, $color-white-2);
+            display: none;
+            position: absolute;
+            top: 100%;
+        }
+
+        ul.dropdown {
+            left: 0;
+            top: 100%;
+            position: absolute;
+            padding: 0px;
+            margin: 0;
+            display: none;
+            // display: block;
+            padding-top: $dropdown-triangle-height;
+            min-width: 100%;
+            li.sub-menu-item {
+                font-weight: normal;
+                font-size: 14px;
+                white-space: nowrap;
+                list-style: none;
+                padding: 0px 15px;
+                background-color: $color-white-2;
+                &:first-child {
+                    border-top-left-radius: $sub-menu-border-radius;
+                    border-top-right-radius: $sub-menu-border-radius;
+                }
+                &:last-child {
+                    border-bottom-left-radius: $sub-menu-border-radius;
+                    border-bottom-right-radius: $sub-menu-border-radius;
+                    & div {
+                        border-bottom: 0px;
+                    }
+                }
+                & a {
+                    color: $color-dark-grey;
+                    text-decoration: none;
+                    font-size: $sub-menu-font-size;
+                }
+                & div {
+                    border-bottom: 1px solid $color-grey;
+                    padding: 7px 0;
+                }
+                &:hover {
+                    & a {
+                        color: $color-tan;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        &:hover {
+            background-color: $color-tan;
+            .dropdown-triangle,
+            .dropdown {
+                display: block;
+            }
+        }
+    }
+
+    .bars-button {
+        height: 100%;
+        width: $navbar-height;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: 0px;
+        cursor: pointer;
+        > i {
+            font-size: 20px;
+            color: $color-white;
+        }
+    }
+
+    @media (min-width: 0) {
+        &__menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: $color-blackish;
+            &.active {
+                display: block;
+            }
+        }
+        ul.dropdown {
+            li.sub-menu-item {
+                & div {
+                    padding: 10px 0;
+                }
+            }
+        }
+        .bars-button {
+            display: flex;
+            &.active {
+                background-color: $color-tan;
+                color: $color-blackish;
+            }
+        }
+    }
+    @media (min-width: $screen-sm-min) {
+        &__menu {
+            position: unset;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .bars-button {
+            display: none;
+        }
+    }
+}
